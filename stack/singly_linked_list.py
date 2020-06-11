@@ -22,6 +22,13 @@ class LinkedList:
         # reference to the tail of the list
         self.tail = None
 
+    def add_to_head(self, value):
+        node = Node(value)
+        node.next = self.head
+        self.head = node
+        if self.tail is None:
+            self.tail = node
+
     def add_to_tail(self, value):
         # wrap the input value in a node
         new_node = Node(value, None)
@@ -71,10 +78,9 @@ class LinkedList:
 
         while current.get_next() is not self.tail:
             current = current.get_next()
-            
+
         value = self.tail.get_value()
         self.tail = current
-        self.tail.set_next(None)
         return value
 
     def contains(self, value):
